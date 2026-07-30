@@ -15,8 +15,8 @@ body {
   min-height: 100vh; padding: 0 16px 60px;
 }
 .app { width: 100%; max-width: 420px; min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding-top: 48px; }
-.brand { display: flex; align-items: center; gap: 8px; margin-bottom: 40px; opacity: 0.85; }
-.brand-logo { width: 36px; height: 36px; background: linear-gradient(135deg, #c41e3a, #a01830); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 18px; font-weight: 700; }
+.brand { display: flex; align-items: center; gap: 10px; margin-bottom: 36px; }
+.brand-logo-img { width: 44px; height: 44px; border-radius: 10px; object-fit: contain; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
 .brand-text { font-size: 13px; color: #8b7355; letter-spacing: 1px; }
 .section { display: none; width: 100%; flex-direction: column; align-items: center; }
 .section.active { display: flex; }
@@ -72,6 +72,7 @@ body {
 .photo-icon { font-size: 44px; opacity: 0.5; }
 .photo-text { font-size: 14px; color: #b8936e; }
 .photo-retake { position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.55); color: #fff; border: none; border-radius: 16px; padding: 6px 14px; font-size: 12px; cursor: pointer; }
+.quiz-question { font-size: 16px; font-weight: 600; color: #3d2e1e; margin-bottom: 16px; line-height: 1.6; text-align: left; padding: 12px 16px; background: #fef9f0; border-radius: 10px; border-left: 3px solid #c41e3a; }
 .quiz-options { display: flex; flex-direction: column; gap: 10px; width: 100%; }
 .quiz-opt { width: 100%; padding: 14px 18px; border: 1.5px solid #e8d5c0; border-radius: 12px; background: #fefaf6; font-size: 15px; color: #3d2e1e; text-align: left; cursor: pointer; transition: all 0.2s; -webkit-tap-highlight-color: transparent; }
 .quiz-opt:active { background: #fdf3e6; }
@@ -87,6 +88,17 @@ body {
 .cert-sub { font-size: 14px; color: #8b7355; margin-bottom: 20px; }
 .cert-name { font-size: 20px; font-weight: 700; color: #3d2e1e; padding: 6px 0; border-bottom: 2px dashed #d4a853; display: inline-block; margin-bottom: 16px; min-width: 100px; }
 .cert-body { font-size: 14px; color: #5c4a3a; line-height: 1.8; }
+
+.reg-form { width: 100%; margin-top: 20px; padding: 20px 16px; background: #fefaf6; border-radius: 12px; border: 1px solid #e8d5c0; }
+.reg-form h3 { font-size: 15px; color: #3d2e1e; margin-bottom: 14px; text-align: center; }
+.reg-field { margin-bottom: 12px; }
+.reg-field label { display: block; font-size: 13px; color: #8b7355; margin-bottom: 4px; }
+.reg-field input { width: 100%; padding: 10px 14px; border: 1.5px solid #e8d5c0; border-radius: 10px; font-size: 15px; font-family: inherit; outline: none; background: #fff; transition: border-color 0.2s; }
+.reg-field input:focus { border-color: #c9a96e; }
+.reg-submit { width: 100%; margin-top: 6px; }
+.reg-status { text-align: center; font-size: 13px; margin-top: 8px; display: none; }
+.reg-status.success { color: #2e7d32; display: block; }
+.reg-status.error { color: #c62828; display: block; }
 .cert-gift { margin-top: 20px; padding: 14px 18px; background: linear-gradient(135deg, #fff8e1, #fff3cd); border-radius: 10px; font-size: 14px; color: #8b6914; line-height: 1.7; }
 .cert-gift strong { color: #c41e3a; }
 .footer { margin-top: 32px; font-size: 12px; color: #c4a882; text-align: center; line-height: 1.6; }
@@ -96,14 +108,35 @@ body {
 .progress-dot { width: 10px; height: 10px; border-radius: 50%; background: #e0cdb0; transition: all 0.3s; }
 .progress-dot.done { background: #c9a96e; }
 .progress-dot.current { background: #c41e3a; transform: scale(1.2); }
+
+.admin-panel { display: none; width: 100%; background: #fff; border-radius: 16px; padding: 24px; box-shadow: 0 2px 20px rgba(0,0,0,0.06); margin-bottom: 24px; }
+.admin-panel.active { display: block; }
+.admin-panel h2 { font-size: 20px; font-weight: 700; color: #3d2e1e; margin-bottom: 4px; }
+.admin-panel .admin-sub { font-size: 13px; color: #8b7355; margin-bottom: 16px; }
+.admin-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.admin-table th { text-align: left; padding: 8px 6px; border-bottom: 2px solid #e8d5c0; color: #8b7355; font-weight: 600; }
+.admin-table td { padding: 8px 6px; border-bottom: 1px solid #f0e6d8; color: #3d2e1e; }
+.admin-export { margin-top: 16px; }
+.admin-empty { text-align: center; color: #b8936e; padding: 24px 0; font-size: 14px; }
 .retry-link { margin-top: 24px; font-size: 13px; color: #b8936e; cursor: pointer; text-decoration: underline; -webkit-tap-highlight-color: transparent; }
 @media (max-width: 360px) { .app { padding-top: 32px; } .hero-title { font-size: 26px; } .box-scene { width: 170px; height: 170px; } .box-body { width: 120px; height: 94px; } .box-lid { width: 132px; height: 42px; } .cert-stamp { width: 60px; height: 60px; font-size: 18px; top: 18px; right: 18px; } }
 </style>
 </head>
 <body>
 <div class="app">
+  <section class=section id="admin">
+    <div class="admin-panel active">
+      <h2>📋 活动数据管理</h2>
+      <p class="admin-sub">所有参与者提交的数据（仅供管理查看）</p>
+      <div id="adminContent"></div>
+      <button class="btn btn-primary btn-sm admin-export" onclick="exportCSV()">⬇ 导出 CSV</button>
+      <button class="btn btn-outline btn-sm" style="margin-top:8px;width:100%" onclick="clearData()">清空数据</button>
+    </div>
+    <div class="retry-link" onclick="resetAll()" style="margin-top:16px">返回活动页面</div>
+  </section>
+
   <section class="section active" id="cover">
-    <div class="brand"><div class="brand-logo">妇</div><span class="brand-text">武义县妇女联合会</span></div>
+    <div class="brand"><img src="logo.jpg" alt="武义县妇联" class="brand-logo-img"><span class="brand-text">武义县妇女联合会</span></div>
     <h1 class="hero-title">清廉家风<br>盲盒</h1>
     <p class="hero-sub">拆一个盲盒，接一份家风任务</p>
     <div class="box-scene" id="blindBox" onclick="openBox()">
@@ -137,7 +170,7 @@ function openBox(){if(currentTask)return;const box=document.getElementById('blin
 function showTask(){const card=document.getElementById('taskCard');const t=currentTask;let html=`<div class="task-emoji">${t.emoji}</div><h2 class="task-title">${t.title}</h2><p class="task-desc">${t.desc}</p>`;if(t.type==='photo')html+=renderPhotoTask();else if(t.type==='text3')html+=renderTextTask(t,'three-line',100);else if(t.type==='text1')html+=renderTextTask(t,'one-line',60);else if(t.type==='quiz')html+=renderQuizTask(t);card.innerHTML=html;showSection('task');completed=false;setTimeout(()=>{if(t.type==='photo')bindPhoto();if(t.type==='quiz')bindQuiz(t);const ta=card.querySelector('textarea');if(ta)bindTextarea(ta);},50);}
 function renderPhotoTask(){return `<div class="photo-zone" id="photoZone" onclick="document.getElementById('photoInput').click()"><span class="photo-icon">📸</span><span class="photo-text">点击拍照或选择图片</span><input type="file" id="photoInput" accept="image/*" capture="environment" style="display:none"></div><button class="btn btn-primary btn-sm" style="margin-top:20px" onclick="submitPhoto()" id="photoSubmitBtn" disabled>提交照片</button>`;}
 function renderTextTask(t,cls,maxLen){return `<textarea class="text-input ${cls}" id="textInput" placeholder="${t.placeholder||'请输入...'}" maxlength="${maxLen}"></textarea><div class="char-count"><span id="charCount">0</span>/${maxLen}</div><button class="btn btn-primary btn-sm" style="margin-top:16px" onclick="submitText()" id="textSubmitBtn" disabled>提交</button>`;}
-function renderQuizTask(t){let html='<div class="quiz-options">';t.options.forEach((opt,i)=>{html+=`<button class="quiz-opt" data-idx="${i}">${opt}</button>`;});html+='</div><div class="quiz-feedback" id="quizFeedback"></div>';return html;}
+function renderQuizTask(t){let html='<div class="quiz-question">'+t.question+'</div><div class="quiz-options">';t.options.forEach((opt,i)=>{html+=`<button class="quiz-opt" data-idx="${i}">${opt}</button>`;});html+='</div><div class="quiz-feedback" id="quizFeedback"></div>';return html;}
 function bindPhoto(){document.getElementById('photoInput').onchange=(e)=>{const file=e.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=(ev)=>{photoData=ev.target.result;const zone=document.getElementById('photoZone');zone.classList.add('has-photo');zone.innerHTML=`<img src="${photoData}" alt="uploaded photo"><button class="photo-retake" onclick="event.stopPropagation();retakePhoto()">重新拍摄</button>`;document.getElementById('photoSubmitBtn').disabled=false;};reader.readAsDataURL(file);};}
 function retakePhoto(){photoData=null;const zone=document.getElementById('photoZone');zone.classList.remove('has-photo');zone.innerHTML='<span class="photo-icon">📸</span><span class="photo-text">点击拍照或选择图片</span>';document.getElementById('photoSubmitBtn').disabled=true;bindPhoto();}
 function submitPhoto(){if(!photoData)return;finishTask();}
@@ -145,7 +178,108 @@ function bindTextarea(ta){const counter=document.getElementById('charCount');con
 function submitText(){const ta=document.getElementById('textInput');if(!ta||ta.value.trim().length===0){showToast('请先写点东西吧~');return;}finishTask();}
 function bindQuiz(t){const opts=document.querySelectorAll('.quiz-opt');let answered=false;opts.forEach(btn=>{btn.onclick=()=>{if(answered)return;answered=true;const idx=parseInt(btn.dataset.idx);const fb=document.getElementById('quizFeedback');if(idx===t.answer){btn.classList.add('correct');fb.className='quiz-feedback right';fb.textContent='✅ 答对了！真有学问~';setTimeout(()=>finishTask(),1200);}else{btn.classList.add('wrong');opts[t.answer].classList.add('correct');fb.className='quiz-feedback wrong';fb.textContent='正确答案是：'+t.options[t.answer]+'。也算你完成任务啦~';setTimeout(()=>finishTask(),2000);}};});}
 function finishTask(){if(completed)return;completed=true;showToast('任务完成！🎉');setTimeout(()=>showCert(),600);}
-function showCert(){const cert=document.getElementById('certContent');const now=new Date();const dateStr=now.getFullYear()+'年'+(now.getMonth()+1)+'月'+now.getDate()+'日';cert.innerHTML=`<div class="cert-stamp">已完成</div><div class="cert-title">🏅 清廉家风达人</div><div class="cert-sub">武义县妇女联合会</div><div class="cert-name">亲爱的参与者</div><div class="cert-body">感谢你参与"清廉家风盲盒"主题活动！<br>你已完成任务：<strong>${currentTask.title}</strong><br><span style="font-size:12px;color:#b8936e">完成时间：${dateStr}</span></div><div class="cert-gift">🎁 <strong>恭喜！</strong><br>凭此页面截图，可到<strong>武义县妇联</strong>领取<br>精美清廉家风主题礼品一份</div>`;showSection('certSection');}
+function showCert(){const cert=document.getElementById('certContent');const now=new Date();const dateStr=now.getFullYear()+'年'+(now.getMonth()+1)+'月'+now.getDate()+'日';cert.innerHTML=`<div class="cert-stamp">已完成</div><div class="cert-title">🏅 清廉家风达人</div><div class="cert-sub">武义县妇女联合会</div><div class="cert-name">亲爱的参与者</div><div class="cert-body">感谢你参与"清廉家风盲盒"主题活动！<br>你已完成任务：<strong>${currentTask.title}</strong><br><span style="font-size:12px;color:#b8936e">完成时间：${dateStr}</span></div><div class="cert-gift">🎁 <strong>恭喜！</strong><br>凭此页面截图，可到<strong>武义县妇联</strong>领取<br>精美清廉家风主题礼品一份</div>`;
+  // Build reg form
+  var regHTML = '<div class="reg-form" id="regForm"><h3>📝 登记领奖信息</h3>';
+  regHTML += '<div class="reg-field"><label>姓名</label><input type="text" id="regName" placeholder="请输入您的姓名"></div>';
+  regHTML += '<div class="reg-field"><label>手机号</label><input type="tel" id="regPhone" placeholder="请输入手机号"></div>';
+  regHTML += '<button class="btn btn-primary btn-sm reg-submit" onclick="submitRegistration()">提交信息</button>';
+  regHTML += '<div class="reg-status" id="regStatus"></div></div>';
+  cert.innerHTML += regHTML;
+  showSection('certSection');
+}
+
+
+// ===== Registration & Data Collection =====
+var API_ENDPOINT = ''; // 配置你的后端地址，例如 'https://your-api.render.com/api/submit'
+
+function submitRegistration(){
+  var name = document.getElementById('regName').value.trim();
+  var phone = document.getElementById('regPhone').value.trim();
+  var status = document.getElementById('regStatus');
+  if(!name || !phone){ status.className='reg-status error'; status.textContent='请填写姓名和手机号'; return; }
+  if(!/^1[3-9]\d{9}$/.test(phone)){ status.className='reg-status error'; status.textContent='请输入正确的手机号'; return; }
+  
+  var record = {
+    name: name,
+    phone: phone,
+    task: currentTask.title,
+    taskType: currentTask.type,
+    time: new Date().toLocaleString('zh-CN'),
+    timestamp: Date.now()
+  };
+  
+  // Save locally
+  var submissions = JSON.parse(localStorage.getItem('ql_submissions') || '[]');
+  submissions.push(record);
+  localStorage.setItem('ql_submissions', JSON.stringify(submissions));
+  
+  // Try to send to backend
+  if(API_ENDPOINT){
+    fetch(API_ENDPOINT, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(record)
+    }).then(function(r){ return r.json(); }).then(function(d){
+      status.className='reg-status success'; status.textContent='✅ 提交成功！凭此页面来妇联领奖~';
+      document.getElementById('regForm').style.display='none';
+    }).catch(function(){
+      status.className='reg-status error'; status.textContent='网络提交失败，但数据已本地保存';
+    });
+  } else {
+    status.className='reg-status success'; status.textContent='✅ 提交成功！凭此页面来妇联领奖~';
+    document.getElementById('regForm').style.display='none';
+  }
+}
+
+function renderAdmin(){
+  var submissions = JSON.parse(localStorage.getItem('ql_submissions') || '[]');
+  var container = document.getElementById('adminContent');
+  if(submissions.length === 0){
+    container.innerHTML = '<div class="admin-empty">暂无提交数据</div>';
+    return;
+  }
+  var html = '<table class="admin-table"><tr><th>姓名</th><th>手机号</th><th>任务</th><th>时间</th></tr>';
+  submissions.reverse().forEach(function(s){
+    html += '<tr><td>' + s.name + '</td><td>' + s.phone + '</td><td style="font-size:12px">' + s.task + '</td><td style="font-size:11px">' + s.time + '</td></tr>';
+  });
+  html += '</table><div style="margin-top:10px;font-size:13px;color:#8b7355">共 ' + submissions.length + ' 条记录</div>';
+  container.innerHTML = html;
+}
+
+function exportCSV(){
+  var submissions = JSON.parse(localStorage.getItem('ql_submissions') || '[]');
+  if(submissions.length === 0){ showToast('暂无数据可导出'); return; }
+  var csv = '﻿姓名,手机号,任务,任务类型,时间
+';
+  submissions.forEach(function(s){
+    csv += '"' + s.name + '","' + s.phone + '","' + s.task + '","' + s.taskType + '","' + s.time + '"
+';
+  });
+  var blob = new Blob([csv], {type: 'text/csv;charset=utf-8'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url; a.download = 'qinglian-jiagui-data-' + new Date().toISOString().slice(0,10) + '.csv';
+  a.click(); URL.revokeObjectURL(url);
+  showToast('CSV 已下载');
+}
+
+function clearData(){
+  if(confirm('确定要清空所有提交数据吗？此操作不可恢复。')){
+    localStorage.removeItem('ql_submissions');
+    renderAdmin();
+    showToast('数据已清空');
+  }
+}
+
+// Check for admin mode
+if(window.location.search.indexOf('admin') !== -1){
+  document.addEventListener('DOMContentLoaded', function(){
+    showSection('admin');
+    renderAdmin();
+  });
+}
+
 document.addEventListener('DOMContentLoaded',()=>{showSection('cover');});
 </script>
 </body>
