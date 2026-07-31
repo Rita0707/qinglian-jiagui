@@ -202,7 +202,7 @@ function submitRegistration(){
   submissions.push(record);
   localStorage.setItem('ql_submissions', JSON.stringify(submissions));
   if(API_ENDPOINT){
-    fetch(API_ENDPOINT, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(record) })
+    fetch(API_ENDPOINT, { method: 'POST', body: JSON.stringify(record) })
     .then(function(r){ return r.json(); })
     .then(function(){ status.className='reg-status success'; status.textContent='✅ 提交成功！凭此页面来妇联领奖~'; document.getElementById('regForm').style.display='none'; })
     .catch(function(){ status.className='reg-status error'; status.textContent='网络提交失败，但数据已本地保存'; });
