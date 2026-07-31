@@ -188,7 +188,7 @@ function showCert(){const cert=document.getElementById('certContent');const now=
   showSection('certSection');
   setTimeout(function(){
     var btn = document.getElementById('regSubmitBtn');
-    if(btn){ btn.addEventListener('click', submitRegistration); btn.addEventListener('touchend', function(e){ e.preventDefault(); submitRegistration(); }); }
+    if(btn){ btn.addEventListener('click', submitRegistration); btn.addEventListener('pointerdown', function(e){ e.preventDefault(); submitRegistration(); }); }
   }, 300);
 }
 
@@ -201,7 +201,7 @@ function submitRegistration(){
   var status = document.getElementById('regStatus');
   if(!name || !phone){ status.className='reg-status error'; status.textContent='请填写姓名和手机号'; return; }
   if(!/^1[3-9]\d{9}$/.test(phone)){ status.className='reg-status error'; status.textContent='请输入正确的手机号'; return; }
-  var content = window._taskContent || "";if(content && currentTask.type==="photo"){content="[照片已上传]";}var record = { name: name, phone: phone, task: currentTask.title, taskType: currentTask.type, content: content, time: new Date().toLocaleString('zh-CN'), timestamp: Date.now() };
+  var content = window._taskContent || "";var record = { name: name, phone: phone, task: currentTask.title, taskType: currentTask.type, content: content, time: new Date().toLocaleString('zh-CN'), timestamp: Date.now() };
   var submissions = JSON.parse(localStorage.getItem('ql_submissions') || '[]');
   submissions.push(record);
   localStorage.setItem('ql_submissions', JSON.stringify(submissions));
